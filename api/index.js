@@ -1,17 +1,24 @@
 const express = require('express');
-const db = require("./app/models");
-const products = require("./app/routes/product.routes");
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require("./app/schemas");
+const resolvers = require("./app/resolvers");
+const db = require('./app/models');
 const app = express();
 
 const PORT = 3000;
 
-app.use(express.urlencoded({ extended: false }));
-
-app.use('/api/products', products);
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  playground: {
+    settings: {
+      'schema.polling.enable': false,
+    },
+  },
 });
+
+apolloServer.applyMiddleware({ app, path: '/graphql' });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
