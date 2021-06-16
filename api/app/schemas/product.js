@@ -21,7 +21,7 @@ module.exports = gql`
     categoryId: Int
   }
   extend type Query {
-    getProducts(name: String = ""): [Product]
+    getProducts(id: Int = null, name: String = null, categoryId: Int = null): [Product]
   }
   extend type Mutation {
     createProduct(product: NewProduct): Product

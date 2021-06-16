@@ -1,0 +1,12 @@
+.card {
+  height: 400px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fbfbfb;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  background-color: #f9f9f9;
+  transform: scale(1.02);
+}

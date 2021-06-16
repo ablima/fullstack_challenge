@@ -5,7 +5,7 @@ const resolvers = require("./app/resolvers");
 const db = require('./app/models');
 const app = express();
 
-const PORT = 3000;
+const PORT = 5000;
 
 const apolloServer = new ApolloServer({
   typeDefs,
@@ -19,6 +19,8 @@ const apolloServer = new ApolloServer({
 });
 
 apolloServer.applyMiddleware({ app, path: '/graphql' });
+
+app.use('/static', express.static('public'));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
