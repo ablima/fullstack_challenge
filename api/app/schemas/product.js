@@ -25,7 +25,7 @@ module.exports = gql`
   }
   extend type Mutation {
     createProduct(product: NewProduct): Product
-    addProductToCart(id: Int): Product
-    removeProductFromCart(id: Int): Product
+    addProductToCart(id: Int, qnt: Int = 1): Product
+    removeProductFromCart(id: Int, qnt: Int = 1): Product
   }
 `;

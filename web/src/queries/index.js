@@ -14,17 +14,17 @@ export const GET_PRODUCTS = gql`
 `
 
 export const ADD_PRODUCT_TO_CART = gql`
-  mutation Product($id: Int){
-    addProductToCart(id: $id){
-      id
+  mutation Product($id: Int, $qnt: Int){
+    addProductToCart(id: $id, qnt: $qnt){
+      qnt
     }
   }
 `;
 
 export const REMOVE_PRODUCT_FROM_CART = gql`
-  mutation Product($id: Int){
-    removeProductFromCart(id: $id){
-      id
+  mutation Product($id: Int, $qnt: Int){
+    removeProductFromCart(id: $id, qnt: $qnt){
+      qnt
     }
   }
 `;

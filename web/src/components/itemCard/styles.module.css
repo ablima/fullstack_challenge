@@ -15,6 +15,10 @@
   opacity: 1.0;
 }
 
+.cardInfo {
+  height: 325px;
+}
+
 .addButton {
   opacity: 0;
   height: 40px;

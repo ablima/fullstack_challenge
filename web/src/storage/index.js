@@ -27,40 +27,40 @@ export const clearCart = () => {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-export const addToCart = (data) => {
+export const addToCart = (data, qnt) => {
   let found = false;
   let currentCart = Object.assign({}, cartStorage());
 
   currentCart.products.map(product => {
     if(product.id == data.id){
-      product.qnt += 1;
+      product.qnt += qnt;
       found = true;
     }
   });
 
   if(!found){
     let newProduct = Object.assign({}, data);
-    newProduct.qnt = 1;
+    newProduct.qnt = qnt;
     currentCart.products.push(newProduct);
   }
 
-  currentCart.total += 1;
+  currentCart.total += qnt;
   cartStorage(currentCart);
   localStorage.setItem("cart", JSON.stringify(currentCart));
 }
 
-export const removeFromCart = (data) => {
+export const removeFromCart = (data, qnt) => {
   let productIndex = null;
   let currentCart = Object.assign({}, cartStorage());
 
   for(let i=0; i<currentCart.products.length; i++){
     let product = currentCart.products[i];
     if(product.id == data.id){
-      product.qnt -= 1;
+      product.qnt -= qnt;
       if(product.qnt <= 0){
         productIndex = i;
       }
-      break;      
+      break;
     }
   }
 
@@ -68,7 +68,7 @@ export const removeFromCart = (data) => {
     currentCart.products.splice(productIndex, 1);
   }
 
-  currentCart.total -= 1;
+  currentCart.total -= qnt;
   cartStorage(currentCart);
   localStorage.setItem("cart", JSON.stringify(currentCart));
 }

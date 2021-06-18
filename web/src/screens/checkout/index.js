@@ -18,19 +18,12 @@ const CheckoutScreen = () => {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const cartItems = useReactiveVar(cart());
   const history = useHistory();
-
-  const [createOrder] = useMutation(CREATE_ORDER, {
-    onCompleted: () => {
-      setOverlayVisible(false);
-      toast.success("Compra realizada com sucesso!");
-      clearCart();
-    },
-    onError: (error) => {
-      toast.error("Erro ao finalizar compra.");
-    }
-  });
+  const [createOrder] = useMutation(CREATE_ORDER);
 
   if(cartItems.total == 0){
+    if(!overlayVisible){
+      toast.info("O carrinho está vazio.");
+    }
     history.push("/");
   }
 
@@ -52,10 +45,22 @@ const CheckoutScreen = () => {
     createOrder({
       variables: {
         order: {
-          cardNumber: cardNumber,
+          cardNumber: cardNumber.split("-").join(""),
           userId: 1,
           products: products  
         }
+      }
+    }).then(() => {
+      toast.success("Compra realizada com sucesso!");
+      clearCart();
+    }).catch((error) => {
+      setOverlayVisible(false);
+      if(error.message.includes("Credit card not approved")){
+        toast.error("Compra não aprovada.");
+      }else if(error.message.includes("Invalid credit card")){
+        toast.error("Número do cartão inválido.");
+      }else{
+        toast.error("Erro ao finalizar compra.");
       }
     });
   }
@@ -95,6 +100,7 @@ const CheckoutScreen = () => {
           }
           {isPayment && 
             <div className={styles.infoContainer}>
+              <span onClick={() => setIsPayment(false)}>Voltar</span>
               <h1>Pagamento</h1>
               <h2>Forma de pagamento</h2>
               <div className={styles.paymentOption}>
@@ -106,7 +112,7 @@ const CheckoutScreen = () => {
               <input 
                 id="cardNumber"
                 maxLength={19}
-                onChange={onCardNumberChange} 
+                onChange={onCardNumberChange}
                 value={cardNumber} 
                 placeholder="Digite o número"
               />
@@ -115,7 +121,7 @@ const CheckoutScreen = () => {
           <div className={styles.checkoutContainer}>
             <span>Total: R$ {getTotalPrice()}</span>
             {!isPayment ?
-              <button onClick={()=>setIsPayment(true)}>Comprar</button> :
+              <button onClick={() => setIsPayment(true)}>Comprar</button> :
               <button onClick={finishCheckout} disabled={cardNumber.length != 19}>Finalizar</button>
             }
           </div>        

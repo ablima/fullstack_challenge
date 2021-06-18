@@ -50,8 +50,8 @@ module.exports = {
     },
     async addProductToCart(root, args, context){
       const product = await db.Product.findByPk(args.id);
-      if(product.qnt > 0){
-        product.qnt -= 1;
+      if(product.qnt - args.qnt >= 0){
+        product.qnt -= args.qnt;
         await product.save();
         return product;
       }else{
@@ -60,7 +60,7 @@ module.exports = {
     },
     async removeProductFromCart(root, args, context){
       const product = await db.Product.findByPk(args.id);
-      product.qnt += 1;
+      product.qnt += args.qnt;
       await product.save();
       return product;
     }

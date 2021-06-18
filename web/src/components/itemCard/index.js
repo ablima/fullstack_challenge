@@ -8,19 +8,7 @@ import styles from "./styles.module.css";
 const ItemCard = (props) => {
   const data = props.product;
   const history = useHistory();
-
-  const [addProductToCart] = useMutation(ADD_PRODUCT_TO_CART, {
-    onCompleted: () => {
-      addToCart(data);
-    },
-    onError: (error) => {
-      if(error.message.includes("Product out of stock")){
-        toast.error("Produto fora de estoque.");
-      }else{
-        toast.error("Erro ao adicionar produto.");
-      }
-    }
-  });
+  const [addProductToCart] = useMutation(ADD_PRODUCT_TO_CART);
 
   const onItemClicked = () => {
     history.push("/details/" + data.id);
@@ -29,14 +17,23 @@ const ItemCard = (props) => {
   const onAddToCartClicked = () => {
     addProductToCart({
       variables: {
-        id: data.id
+        id: data.id,
+        qnt: 1
+      }
+    }).then(() => {
+      addToCart(data, 1);
+    }).catch((error) => {
+      if(error.message.includes("Product out of stock")){
+        toast.error("Produto fora de estoque.");
+      }else{
+        toast.error("Erro ao adicionar produto.");
       }
     });
   }
 
   return (
     <div className={styles.card}>
-      <div onClick={onItemClicked}>
+      <div onClick={onItemClicked} className={styles.cardInfo}>
         {props.product &&
           <div>
             <h1>{data.name}</h1>
