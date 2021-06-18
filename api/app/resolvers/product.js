@@ -1,5 +1,6 @@
 const db = require("../models");
 const { Op } = require("sequelize");
+const { ApolloError } = require('apollo-server-errors');
 
 module.exports = {
   Query: {
@@ -46,6 +47,22 @@ module.exports = {
   Mutation: {
     async createProduct(root, args, context){
       return db.Product.create(args.product);
+    },
+    async addProductToCart(root, args, context){
+      const product = await db.Product.findByPk(args.id);
+      if(product.qnt > 0){
+        product.qnt -= 1;
+        await product.save();
+        return product;
+      }else{
+        throw new ApolloError("Product out of stock", "403");
+      }
+    },
+    async removeProductFromCart(root, args, context){
+      const product = await db.Product.findByPk(args.id);
+      product.qnt += 1;
+      await product.save();
+      return product;
     }
   }
 }

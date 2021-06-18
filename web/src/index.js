@@ -10,6 +10,7 @@ import {
 import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
+import { ToastContainer } from 'react-toastify';
 
 import ListScreen from './screens/list';
 import CheckoutScreen from './screens/checkout';
@@ -47,6 +48,12 @@ ReactDOM.render(
           </Route>
         </Switch>
       </Router>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar
+        closeOnClick
+      />
     </ApolloProvider>    
   </React.StrictMode>,
   document.getElementById('root')

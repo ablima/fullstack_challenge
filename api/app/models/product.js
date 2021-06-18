@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       as: "category"
     });
     Product.belongsToMany(models.Order, {
-      through: "OrderProduct",
+      through: models.OrderProduct,
       as: "orders"
     });
   }

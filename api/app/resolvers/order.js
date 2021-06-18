@@ -28,27 +28,22 @@ module.exports = {
     }
   },
   Mutation: {
-    async createOrder(root, args, context){
-      const query = await db.Product.findAll({
-        attributes: [
-          [sequelize.fn('sum', sequelize.col('price')), 'totalPrice'],
-        ],
-        where: {
-          id: {
-            [sequelize.Op.in]: args.order.productsId
-          }
-        }
-      });
-
+    async createOrder(root, args, context){      
       const newOrder = {
-        totalPrice: query[0].dataValues.totalPrice,
-        userId: args.order.userId
-      }
+        userId: args.order.userId,
+        products: []
+      }      
 
       return db.Order.create(newOrder)
         .then(
-          async (order) => {
-            order.addProducts(args.order.productsId);
+          (order) => {
+            args.order.products.map(product => {
+              order.addProduct(product.id, {
+                through: {
+                  qnt: product.qnt
+                }
+              });
+            });
           }
         );
     }

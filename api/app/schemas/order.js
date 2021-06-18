@@ -7,9 +7,14 @@ module.exports = gql`
     user: User
     products: [Product]
   }
+  input OrderProduct {
+    id: Int,
+    qnt: Int
+  }
   input NewOrder {
+    cardNumber: String,
     userId: Int,
-    productsId : [Int]
+    products : [OrderProduct]
   }
   extend type Query {
     getOrders(userId: Int = 0): [Order]

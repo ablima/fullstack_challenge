@@ -21,7 +21,7 @@
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: #47432e;
 }
 
 /*
@@ -35,7 +35,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #233481;
+  background: #b4a873;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -54,13 +54,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Individual item */
 .bm-item {
   cursor: pointer;
-  color: #dbdacf;
+  color: #47432e;
+  font-weight: bold;
   padding: 0.8em 0 0.8em;
   transition: color 0.2s;
 }
 
 .bm-item:hover {
-  color: #88877c;  
+  color: #80702c;  
 }
 
 /* Styling of overlay */

@@ -1,0 +1,56 @@
+.icon {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.badge {
+  position: fixed;
+  margin-left: 20px;
+  margin-top: -10px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border-radius: 100%;
+  color: white;
+  background-color: #c95d1f;
+}
+
+.cartContainer {
+  margin-left: -350px;
+  border-radius: 5px;
+  width: 380px;
+  min-height: 100px;
+  padding-top: 5px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #e2dcc0;
+  background-color: #ffffff;
+}
+
+.cartItems {
+  max-height: 300px;
+  overflow: auto;  
+}
+
+.footer {
+  border-top: 1px solid #ddd3ad;
+  padding-top: 12px;
+  height: 40px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e7e3d3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(228, 217, 162);
+}

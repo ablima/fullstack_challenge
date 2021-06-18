@@ -7,6 +7,23 @@
 }
 
 .card:hover {
-  background-color: #f9f9f9;
+  background-color: #f7f7f7;
   transform: scale(1.02);
+}
+
+.card:hover div {
+  opacity: 1.0;
+}
+
+.addButton {
+  opacity: 0;
+  height: 40px;
+  border-radius: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: #62685e;
+  background-color: #c9c06d;
+  transition: opacity 0.2s;
+  z-index: 10;
 }

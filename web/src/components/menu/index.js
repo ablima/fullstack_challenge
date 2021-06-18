@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { slide as MenuSlider } from 'react-burger-menu';
-import styles from "./styles.module.css";
 import { useCategories } from '../../hooks/categories';
+import CartButton from '../cartButton';
+import StoreLogo from '../../assets/icons/storeLogo.png';
+import styles from "./styles.module.css";
+import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
 const Menu = (props) => {
+  const history = useHistory();
   const categories = useCategories();
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +22,10 @@ const Menu = (props) => {
   const menuItemClick = (itemId) => {
     props.onItemSelected(itemId);
     setIsOpen(false);
+  }
+
+  const goToHome = () => {
+    history.push("/");
   }
 
   const renderCategories = () => {
@@ -33,9 +42,7 @@ const Menu = (props) => {
   }
 
   return (
-    <div id="outer-container" style={{
-      flex: 1
-    }}>
+    <div id="outer-container">
       <div id="header" className={styles.header}>
         {isMobile &&
           <MenuSlider
@@ -52,13 +59,15 @@ const Menu = (props) => {
             }
           </MenuSlider>
         }
+        <img onClick={goToHome} src={StoreLogo} className={styles.logo} />
+        <CartButton className={styles.cartIcon} />
       </div>
       <main id="page-wrap">
         <div className={styles.mainContent}>
           {!isMobile && renderCategories()}
           {props.children}
         </div>
-      </main>   
+      </main>      
     </div>
   );
 }
