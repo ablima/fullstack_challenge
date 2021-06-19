@@ -15,13 +15,15 @@ import { ToastContainer } from 'react-toastify';
 import ListScreen from './screens/list';
 import CheckoutScreen from './screens/checkout';
 import DetailsScreen from './screens/details';
-
+import { API_URL } from './constants';
 import reportWebVitals from './reportWebVitals';
+
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './index.css';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: 'http://localhost:5000/graphql'
+  uri: API_URL
 })
 
 const client = new ApolloClient({

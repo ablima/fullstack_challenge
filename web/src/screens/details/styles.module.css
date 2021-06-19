@@ -1,0 +1,66 @@
+@media (min-width: 1100px) {
+  .root { 
+    display: flex;
+  }
+}
+
+.qntInput button {
+  width: 50px;
+  height: 50px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: var(--gray);
+  border: 1px solid var(--primaryText);
+  transition: all 0.2s;
+}
+
+.qntInput button:hover {
+  background-color: var(--grayHover);
+}
+
+.qntInput input {
+  width: 100px;
+  height: 35px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: 1px solid var(--primaryText);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.info {
+  width: 100%;
+  padding: 20px;
+}
+
+.details {
+  margin-bottom: 50px;
+}
+
+.details table {
+  width: 100%;
+}
+
+.details table tr {
+  height: 40px;
+  background-color: var(--gray);
+}
+
+.addButton {
+  height: 50px;
+  width: 200px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: var(--primary);
+  border: none;
+  transition: all 0.2s;
+}
+
+.addButton:hover {
+  background-color: var(--primaryHover);
+}

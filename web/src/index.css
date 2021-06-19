@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*:focus {
+  outline: none;
+}
+
+:root {
+  --primary: #d6c782;
+  --primaryHover: #bbaf7b;
+  --menu: #b4a873;
+  --primaryText: #47432e;
+  --primaryTextHover: #80702c;
+  --gray: #fbfbfb;
+  --grayHover: #f7f7f7;
+}
