@@ -115,9 +115,12 @@ const ItemList = (props) => {
               <h5>{priceFormatter.format(product.price)}</h5>
             </div>
             <div className={styles.qntInputContainer}>
-              <button onClick={() => removeProduct(1)}>-</button>
-              <input onBlur={onInputBlur} onChange={onInputChange} value={inputQnt} />
-              <button onClick={() => addProduct(1)}>+</button>
+              <div>
+                <button onClick={() => removeProduct(1)}>-</button>
+                <input onBlur={onInputBlur} onChange={onInputChange} value={inputQnt} />
+                <button onClick={() => addProduct(1)}>+</button>
+              </div>
+              <span onClick={removeAll}>Remover</span>
             </div>
             <div className={styles.priceContainer}>
               <h5>Subtotal:</h5>

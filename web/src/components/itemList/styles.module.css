@@ -81,6 +81,10 @@
   text-align: center;
 }
 
+.qntContainer span {
+  cursor: pointer;
+}
+
 .qntContainer button {
   width: 30px;
   height: 40px;
