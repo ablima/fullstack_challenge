@@ -10,6 +10,13 @@
   }
 }
 
+@media (max-width: 720px) {
+  .root {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
 input {
   width: 60%;
 }
@@ -23,6 +30,15 @@ input {
   margin-top: 20px;
 }
 
+.cardInput {
+  height: 30px;
+  margin-top: 10px;
+  padding: 5px 15px 5px 15px;
+  font-size: 16px;
+  border: 1px solid var(--secondary);
+  border-radius: 10px;
+}
+
 .paymentOption {
   width: 100px;
   height: 70px;
@@ -31,17 +47,19 @@ input {
   font-weight: bold;
   text-align: center;
   color: #5c594f;
-  border: 1px solid #5c594f;
-  background-color: #cfc39a;
+  border: 1px solid var(--secondary);
+  background-color: var(--primary);
 }
 
 .checkoutContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 50px;
+  padding: 10px;
   width: 300px;
-  height: 300px;  
-  background-color: #fffbec;
+  height: 300px;
+  text-align: center;
+  background-color: var(--primaryLight);
 }
 
 .checkoutContainer span {
@@ -50,7 +68,28 @@ input {
 }
 
 .checkoutContainer button {
+  height: 40px;
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: var(--primary);
+  transition: all 0.2s;
+}
+
+.checkoutContainer button:hover {
+  background-color: var(--primaryHover);
+}
+
+.backButton {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--secondary);
+  transition: all 0.2s;
+}
+
+.backButton:hover {
+  color: var(--secondaryHover);
 }

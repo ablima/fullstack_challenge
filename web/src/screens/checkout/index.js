@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import { cart, clearCart } from "../../storage";
 import { CREATE_ORDER } from "../../queries";
 import { toast } from 'react-toastify';
+import { priceFormatter } from "../../utils";
 import LoadingOverlay from "../../components/loadingOverlay";
 import ItemList from "../../components/itemList";
 import Menu from "../../components/menu";
@@ -93,6 +94,7 @@ const CheckoutScreen = () => {
         <div className={styles.root}>
           {!isPayment &&
             <div className={styles.infoContainer}>
+              <h1>Carrinho</h1>
               {cartItems.products.map(product => (
                 <ItemList data={product} />
               ))}
@@ -100,7 +102,7 @@ const CheckoutScreen = () => {
           }
           {isPayment && 
             <div className={styles.infoContainer}>
-              <span onClick={() => setIsPayment(false)}>Voltar</span>
+              <span onClick={() => setIsPayment(false)} className={styles.backButton}>Voltar</span>
               <h1>Pagamento</h1>
               <h2>Forma de pagamento</h2>
               <div className={styles.paymentOption}>
@@ -113,13 +115,14 @@ const CheckoutScreen = () => {
                 id="cardNumber"
                 maxLength={19}
                 onChange={onCardNumberChange}
-                value={cardNumber} 
+                value={cardNumber}
+                className={styles.cardInput}
                 placeholder="Digite o número"
               />
             </div>
           }
           <div className={styles.checkoutContainer}>
-            <span>Total: R$ {getTotalPrice()}</span>
+            <h3>Total: {priceFormatter.format(getTotalPrice())}</h3>
             {!isPayment ?
               <button onClick={() => setIsPayment(true)}>Comprar</button> :
               <button onClick={finishCheckout} disabled={cardNumber.length != 19}>Finalizar</button>

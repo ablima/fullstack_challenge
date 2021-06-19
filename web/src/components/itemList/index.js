@@ -3,6 +3,7 @@ import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART } from "../../queries";
 import { useMutation } from "@apollo/client";
 import { addToCart, removeFromCart } from "../../storage";
 import { toast } from 'react-toastify';
+import { STATIC_URL } from "../../constants";
 import styles from "./styles.module.css";
 
 const ItemList = (props) => {
@@ -55,6 +56,7 @@ const ItemList = (props) => {
       }
     }).then(() => {
       removeFromCart(product, product.qnt);
+      toast.info("Produto removido do carrinho.");
     });
   }
 
@@ -88,19 +90,24 @@ const ItemList = (props) => {
   }
 
   return (
-    <div className={getItemStyle()}>
-      <span>{product?.name}</span>
-      {props.resized && 
-        <span> - {product?.qnt}</span>
-      }
-      {!props.resized &&
+    <div className={getItemStyle()}>      
+      {product &&
         <>
-          <button onClick={() => removeProduct(1)}>-</button>
-          <input onBlur={onInputBlur} onChange={onInputChange} value={inputQnt} />
-          <button onClick={() => addProduct(1)}>+</button>
+          <img src={STATIC_URL + product.thumbnails[0]} />
+          <h5>{product?.name}</h5>
+          {props.resized && 
+            <h6>Qnt: {product?.qnt}</h6>
+          }
+          {!props.resized &&
+            <div className={styles.qntInput}>
+              <button onClick={() => removeProduct(1)}>-</button>
+              <input onBlur={onInputBlur} onChange={onInputChange} value={inputQnt} />
+              <button onClick={() => addProduct(1)}>+</button>
+            </div>
+          }
+          <button className={styles.removeButton} onClick={removeAll}>X</button>
         </>
       }
-      <button onClick={removeAll}>Remover</button>
     </div>
   );
 }

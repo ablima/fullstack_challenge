@@ -19,9 +19,11 @@ code {
 :root {
   --primary: #d6c782;
   --primaryHover: #bbaf7b;
-  --menu: #b4a873;
-  --primaryText: #47432e;
-  --primaryTextHover: #80702c;
+  --secondary: #47432e;
+  --secondaryHover: #80702c;
+  --primaryDark: #b4a873;
+  --primaryLight: #fffbec;
   --gray: #fbfbfb;
   --grayHover: #f7f7f7;
+  --red: #c95d1f;
 }

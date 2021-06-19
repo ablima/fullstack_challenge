@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Animated } from "react-animated-css";
 import { useReactiveVar } from '@apollo/client';
 import { cart } from "../../storage";
+import { priceFormatter } from "../../utils";
 import ItemList from "../itemList";
 import CartIcon from '../../assets/icons/cart.svg';
 import styles from './styles.module.css';
@@ -54,7 +55,7 @@ const CartButton = (props) => {
                 ))}
               </div>
               <div className={styles.footer}>
-                <span>Total: R$ {getTotalPrice()}</span>
+                <span>Total: {priceFormatter.format(getTotalPrice())}</span>
                 <button onClick={goToCheckout}>Checkout</button>
               </div>
             </>

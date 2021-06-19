@@ -41,6 +41,8 @@ export const addToCart = (data, qnt) => {
   if(!found){
     let newProduct = Object.assign({}, data);
     newProduct.qnt = qnt;
+    newProduct.thumbnails = newProduct.thumbnails.split(";");
+    newProduct.description = JSON.parse(newProduct.description);
     currentCart.products.push(newProduct);
   }
 
