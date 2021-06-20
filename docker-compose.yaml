@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql
+    restart: always
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+    networks:
+      - app-net
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    image: node-app
+    depends_on:
+      - mysqldb
+    ports:
+      - 3010:3010
+    networks:
+      - app-net
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+
+  web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    image: web-app
+    depends_on:
+      - api
+    ports:
+      - 3000:3000
+    networks:
+      - app-net
+
+volumes:
+  db-data:
+
+networks:
+  app-net:
+    driver: bridge

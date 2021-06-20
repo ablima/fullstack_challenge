@@ -1,5 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-  const Order = sequelize.define('Order', {});
+  const Order = sequelize.define('Order', {}, {
+    tableName: 'orders'
+  });
   Order.associate = function(models){
     Order.belongsTo(models.User, {
       foreignKey: "userId",

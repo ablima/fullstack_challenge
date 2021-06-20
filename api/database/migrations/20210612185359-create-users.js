@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    return queryInterface.createTable('Users', {  
+    return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
