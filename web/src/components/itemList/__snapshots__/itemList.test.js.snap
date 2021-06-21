@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if render is correct 1`] = `
+<div
+  className="itemContainer item"
+>
+  <div
+    className="infoContainer"
+  >
+    <img
+      src="http://localhost:3010/static/i"
+    />
+    <h4>
+      Produto
+    </h4>
+  </div>
+  <div
+    className="qntContainer"
+  >
+    <div
+      className="priceContainer"
+    >
+      <h5>
+        Preço:
+      </h5>
+      <h5>
+        R$ 100,00
+      </h5>
+    </div>
+    <div
+      className="qntInputContainer"
+    >
+      <div>
+        <button
+          onClick={[Function]}
+        >
+          -
+        </button>
+        <input
+          onBlur={[Function]}
+          onChange={[Function]}
+          value={5}
+        />
+        <button
+          onClick={[Function]}
+        >
+          +
+        </button>
+      </div>
+      <span
+        onClick={[Function]}
+      >
+        Remover
+      </span>
+    </div>
+    <div
+      className="priceContainer"
+    >
+      <h5>
+        Subtotal:
+      </h5>
+      <h5>
+        R$ 500,00
+      </h5>
+    </div>
+  </div>
+</div>
+`;

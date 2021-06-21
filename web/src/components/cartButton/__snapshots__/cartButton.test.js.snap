@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if render is correct 1`] = `
+<div>
+  <img
+    className="icon"
+    onClick={[Function]}
+    src="cart.svg"
+  />
+  <div
+    className="animated"
+    style={
+      Object {
+        "animationDelay": "undefinedms",
+        "animationDuration": "undefinedms",
+        "opacity": 0,
+        "pointerEvents": "none",
+      }
+    }
+  >
+    <div
+      className="cartContainer"
+    >
+      <span>
+        Sem produtos no carrinho
+      </span>
+    </div>
+  </div>
+</div>
+`;

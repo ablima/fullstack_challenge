@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if render is correct 1`] = `
+<div
+  id="outer-container"
+>
+  <div
+    className="header"
+    id="header"
+  >
+    <img
+      className="logo"
+      onClick={[Function]}
+      src="storeLogo.png"
+    />
+    <div
+      className="cartIcon"
+    >
+      <img
+        className="icon"
+        onClick={[Function]}
+        src="cart.svg"
+      />
+      <div
+        className="animated"
+        style={
+          Object {
+            "animationDelay": "undefinedms",
+            "animationDuration": "undefinedms",
+            "opacity": 0,
+            "pointerEvents": "none",
+          }
+        }
+      >
+        <div
+          className="cartContainer"
+        >
+          <span>
+            Sem produtos no carrinho
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main
+    id="page-wrap"
+  >
+    <div
+      className="mainContent"
+    >
+      <div
+        className="categoriesContainer"
+      />
+      <div
+        className="cardContainer"
+      />
+    </div>
+  </main>
+</div>
+`;

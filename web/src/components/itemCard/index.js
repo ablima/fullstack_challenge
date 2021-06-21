@@ -37,7 +37,7 @@ const ItemCard = (props) => {
 
   return (
     <div className={styles.card}>
-      <div onClick={onItemClicked} className={styles.cardInfo}>
+      <div id="cardButton" onClick={onItemClicked} className={styles.cardInfo}>
         {props.product &&
           <div>
             <img src={STATIC_URL + thumbnails[0]} />
@@ -46,7 +46,7 @@ const ItemCard = (props) => {
           </div>          
         }
       </div>
-      <div onClick={onAddToCartClicked} className={styles.addButton}>
+      <div id="addButton" onClick={onAddToCartClicked} className={styles.addButton}>
         Adicionar ao carrinho
       </div>
     </div>    

@@ -1,17 +1,14 @@
 import { useState } from "react";
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from "../../queries";
 import Menu from "../../components/menu";
 import ItemCard from "../../components/itemCard";
 import { useParams } from "react-router-dom";
-import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART } from "../../queries";
 import styles from "./styles.module.css"
 
 const ListScreen = () => {
   const { id } = useParams();
   const [categoryId, setCategoryId] = useState(id ? id : 1);
-  const [addProductToCart] = useMutation(ADD_PRODUCT_TO_CART);
-  const [removeProductFromCart] = useMutation(REMOVE_PRODUCT_FROM_CART);
   const { data } = useQuery(GET_PRODUCTS, {
     variables: {
       categoryId: parseInt(categoryId)

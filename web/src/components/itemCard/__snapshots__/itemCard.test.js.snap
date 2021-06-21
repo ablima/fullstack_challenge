@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if render is correct 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="cardInfo"
+    id="cardButton"
+    onClick={[Function]}
+  >
+    <div>
+      <img
+        src="http://localhost:3010/static/images/celular1-1.jpg"
+      />
+      <h3>
+        Produto
+      </h3>
+      <h2>
+        R$ 100,00
+      </h2>
+    </div>
+  </div>
+  <div
+    className="addButton"
+    id="addButton"
+    onClick={[Function]}
+  >
+    Adicionar ao carrinho
+  </div>
+</div>
+`;
