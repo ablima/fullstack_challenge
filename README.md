@@ -43,3 +43,6 @@ Frontend:
 * Alternatively, you can execute `npm run test` on _api_ folder
 
 * For frontend, execute `yarn test` on _web_ folder
+
+<img height="180cm" src="https://github-readme-stats.vercel.app/api?username=ablima&show_icons=true&theme=radical&include_all_commits=false&count_private=true)](https://github.com/ablima/github-readme-stats)"/>
+<img height="180cm" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ablima&layout=compact&theme=radical"/>
